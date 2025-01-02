@@ -2,9 +2,11 @@ package conta;
 
 public abstract class Conta {
 	private final int NUMEROCONTA;
+	private final int DIGITO;
+	private final String IDENTIFICACAOCONTA;
 	private double saldo;
 
-	public Conta(int NUMEROCONTA) {
+	public Conta(int NUMEROCONTA, int DIGITO) {
 		int limiteMinimo = 10000000;
 		int limiteMaximo = 99999999;
 
@@ -13,6 +15,8 @@ public abstract class Conta {
 		}
 
 		this.NUMEROCONTA = NUMEROCONTA;
+		this.DIGITO = DIGITO;
+		this.IDENTIFICACAOCONTA = null;
 		this.saldo = 0;
 	}
 
@@ -24,12 +28,24 @@ public abstract class Conta {
 		return saldo;
 	}
 
+	public int getDIGITO() {
+		return DIGITO;
+	}
+
+	public String getIDENTIFICACAOCONTA() {
+		return IDENTIFICACAOCONTA;
+	}
+
 	protected void adiciona(double valor) {
 		this.saldo += valor;
 	}
 
 	protected void subtrai(double valor) {
 		this.saldo -= valor;
+	}
+
+	public void  adicionaDigito(){
+		this.IDENTIFICACAOCONTA= getNUMEROCONTA() + "-" + getDIGITO();
 	}
 
 	public abstract void exibeDetalhes();

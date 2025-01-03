@@ -16,7 +16,7 @@ public abstract class Conta {
 
 		this.NUMEROCONTA = NUMEROCONTA;
 		this.DIGITO = DIGITO;
-		this.IDENTIFICACAOCONTA = null;
+		this.IDENTIFICACAOCONTA = getNUMEROCONTA() + "-" + getDIGITO();
 		this.saldo = 0;
 	}
 
@@ -44,9 +44,6 @@ public abstract class Conta {
 		this.saldo -= valor;
 	}
 
-	public void  adicionaDigito(){
-		this.IDENTIFICACAOCONTA= getNUMEROCONTA() + "-" + getDIGITO();
-	}
 
 	public abstract void exibeDetalhes();
 }

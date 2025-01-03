@@ -6,26 +6,29 @@ public class Main {
     private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int op;
+        int opicao;
         do {
 menu();
-op = sc.nextInt();
+opicao = sc.nextInt();
 sc.nextLine();
-gerenciaOpcao(op);
-        } while (op != 6);
+gerenciaOpcao(opicao);
+        } while (opicao != 6);
 
         sc.close();
     }
 
     public static void menu() {
-        System.out.println("\tBem-vindo ao nosso banco!");
-        System.out.println("\tDigite (1) para cadastrar cliente;");
-        System.out.println("\tDigite (2) para sacar;");
-        System.out.println("\tDigite (3) para realisar depósito;");
-        System.out.println("\tDigite (4) para realisar transferencia;");
-        System.out.println("\tDigite (5) para ver saldo;");
-        System.out.println("\tDigite (6) para sair do APP.");
-        System.out.println("\tQual é a sua escolha? ");
+        String mensagem = """
+                \tBem-vindo ao nosso banco!
+                \tDigite (1) para cadastrar cliente;
+                \tDigite (2) para sacar;
+                \tDigite (3) para realizar depósito;
+                \tDigite (4) para realizar transferência;
+                \tDigite (5) para ver saldo;
+                \tDigite (6) para sair do APP.
+                \tQual é a sua escolha?
+                """;
+        System.out.println(mensagem);
 
     }
 

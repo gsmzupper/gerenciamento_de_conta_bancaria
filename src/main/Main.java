@@ -8,10 +8,10 @@ public class Main {
     public static void main(String[] args) {
         int opicao;
         do {
-menu();
-opicao = sc.nextInt();
-sc.nextLine();
-gerenciaOpcao(opicao);
+            menu();
+            opicao = sc.nextInt();
+            sc.nextLine();
+            gerenciaOpcao(opicao);
         } while (opicao != 6);
 
         sc.close();

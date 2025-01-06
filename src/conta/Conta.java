@@ -36,11 +36,11 @@ public abstract class Conta {
 		return IDENTIFICACAOCONTA;
 	}
 
-	protected void adiciona(double valor) {
+	public void adiciona(double valor) {
 		this.saldo += valor;
 	}
 
-	protected void subtrai(double valor) {
+	public void subtrai(double valor) {
 		this.saldo -= valor;
 	}
 

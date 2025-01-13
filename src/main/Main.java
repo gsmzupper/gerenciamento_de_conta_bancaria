@@ -114,67 +114,77 @@ public class Main {
     }
 
     public static void realizarSaque() {
-        Conta conta = buscarConta();
+        System.out.println("\tDigite o número da conta (formato: NUMERO-DIGITO): ");
+        String numeroConta = sc.nextLine();
+
+        System.out.println("\tDigite o valor do saque: ");
+        double valor = sc.nextDouble();
+
+        Conta conta = buscarConta(numeroConta);
+
         if (conta != null) {
-            System.out.println("\tDigite o valor do saque:");
-            double valor = sc.nextDouble();
-            if (conta.getSaldo() >= valor) {
-                conta.subtrai(valor);
-                System.out.println("\tSaque realizado com sucesso! Saldo atual: " + conta.getSaldo());
-            } else {
-                System.out.println("\tSaldo insuficiente.");
-            }
+            new operacoes.Sacar(valor, conta).operacao();
+        } else {
+            System.out.println("\tConta não encontrada.");
         }
+
     }
 
     public static void realizarDeposito() {
-        Conta conta = buscarConta();
+        System.out.println("\tDigite o número da conta (formato: NUMERO-DIGITO): ");
+        String numeroConta = sc.nextLine();
+
+        System.out.println("\tDigite o valor do depósito: ");
+        double valor = sc.nextDouble();
+
+        Conta conta = buscarConta(numeroConta);
+
         if (conta != null) {
-            System.out.println("\tDigite o valor do depósito:");
-            double valor = sc.nextDouble();
-            conta.adiciona(valor);
-            System.out.println("\tDepósito realizado com sucesso! Saldo atual: " + conta.getSaldo());
+            new operacoes.Depositar(valor, conta).operacao();
+        } else {
+            System.out.println("\tConta não encontrada.");
         }
     }
 
-    
     public static void realizarTransferencia() {
-        System.out.println("\tDigite o número da conta de origem:");
-        Conta contaOrigem = buscarConta();
-        if (contaOrigem != null) {
-            System.out.println("\tDigite o número da conta de destino:");
-            Conta contaDestino = buscarConta();
-            if (contaDestino != null) {
-                System.out.println("\tDigite o valor da transferência:");
-                double valor = sc.nextDouble();
-                if (contaOrigem.getSaldo() >= valor) {
-                    contaOrigem.subtrai(valor);
-                    contaDestino.adiciona(valor);
-                    System.out.println("\tTransferência realizada com sucesso!");
-                } else {
-                    System.out.println("\tSaldo insuficiente.");
-                }
-            }
+        System.out.println("\tDigite o número da conta de origem (formato: NUMERO-DIGITO): ");
+        String numeroOrigem = sc.nextLine();
+
+        System.out.println("\tDigite o número da conta de destino (formato: NUMERO-DIGITO): ");
+        String numeroDestino = sc.nextLine();
+
+        System.out.println("\tDigite o valor da transferência: ");
+        double valor = sc.nextDouble();
+
+        Conta contaOrigem = buscarConta(numeroOrigem);
+        Conta contaDestino = buscarConta(numeroDestino);
+
+        if (contaOrigem != null && contaDestino != null) {
+            new operacoes.Transferir(valor, contaOrigem, contaDestino).operacao();
+        } else {
+            System.out.println("\tConta de origem ou destino não encontrada.");
         }
     }
 
     public static void consultarSaldo() {
-        Conta conta = buscarConta();
+        System.out.println("\tDigite o número da conta (formato: NUMERO-DIGITO): ");
+        String numeroConta = sc.nextLine();
+
+        Conta conta = buscarConta(numeroConta);
+
         if (conta != null) {
-            System.out.println("\tSaldo atual: " + conta.getSaldo());
+            System.out.println("\tSaldo da conta " + conta.getIDENTIFICACAOCONTA() + ": " + conta.getSaldo());
+        } else {
+            System.out.println("\tConta não encontrada.");
         }
     }
 
-
-    private static Conta buscarConta() {
-        System.out.println("\tDigite o número da conta (formato: XXXXXXXX-X):");
-        String identificacaoConta = sc.nextLine();
+    private static Conta buscarConta(String numeroConta) {
         for (Conta conta : contas) {
-            if (conta.getIDENTIFICACAOCONTA().equals(identificacaoConta)) {
+            if (conta.getIDENTIFICACAOCONTA().equals(numeroConta)) {
                 return conta;
             }
         }
-        System.out.println("\tConta não encontrada.");
         return null;
     }
 }

@@ -5,23 +5,14 @@ import conta.Conta;
 import java.lang.reflect.Field;
 
 public class Sacar implements Operacoes {
-    private final String numeroDaConta;
     private final double valor;
     private Conta conta;
 
-    public Sacar(String numeroDaConta, double valor, Conta conta) {
-        verificaNumeroDaConta(numeroDaConta);
+    public Sacar(double valor, Conta conta) {
         validaValor(valor);
         verificaConta(conta);
-        this.numeroDaConta = numeroDaConta;
         this.valor = valor;
         this.conta = conta;
-    }
-
-    private static void verificaNumeroDaConta(String numeroDaConta) {
-        if (numeroDaConta == null) {
-            throw new IllegalArgumentException("O número da conta não pode ser nulo.");
-        }
     }
 
     private static void validaValor(double valor) {

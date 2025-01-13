@@ -36,15 +36,6 @@ public abstract class Conta {
 		return IDENTIFICACAOCONTA;
 	}
 
-	public void adiciona(double valor) {
-		this.saldo += valor;
-	}
-
-	public void subtrai(double valor) {
-		this.saldo -= valor;
-	}
-
-
 	public abstract void exibeDetalhes();
 }
 

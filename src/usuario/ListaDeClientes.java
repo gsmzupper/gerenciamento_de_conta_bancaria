@@ -12,7 +12,7 @@ public class ListaDeClientes { // Lista para armazenar os clientes
         return clientes;
     }
 
-    public static void setClientes(ArrayList<String> clientes) {
+                public static void setClientes(ArrayList<String> clientes) {
         ListaDeClientes.clientes = clientes;
     }
 

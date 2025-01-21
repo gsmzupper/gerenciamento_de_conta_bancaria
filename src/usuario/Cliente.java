@@ -3,7 +3,7 @@ package usuario;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cliente {
+public class    Cliente {
 
     private String nome;
     private String cpf;
@@ -19,7 +19,7 @@ public class Cliente {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void                         setNome(String nome) {
         this.nome = nome;
     }
 
